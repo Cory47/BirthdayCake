@@ -34,7 +34,8 @@ public class CakeView extends SurfaceView {
     public static final float outerFlameRadius = 45.0f;
     public static final float innerFlameRadius = 20.0f;
     private CakeModel cake;
-
+    private boolean drawBalloon;
+    private Balloon balloon;
 
 
     /**
@@ -125,6 +126,9 @@ public class CakeView extends SurfaceView {
         //Now two candles in the center
         for (int i = 1; i < cake.numCandles + 1; i++ ) {
             drawCandle(canvas, cakeLeft + (cakeWidth * i) / (cake.numCandles + 1) - (candleWidth * i) / 2, cakeTop);
+        }
+        if(cake.drawBalloon){
+            cake.myBalloon.draw(canvas);
         }
         //drawCandle(canvas, cakeLeft + cakeWidth/3 - candleWidth/3, cakeTop);
         //drawCandle(canvas, cakeLeft + cakeWidth*2/3 - candleWidth*2/3, cakeTop);
