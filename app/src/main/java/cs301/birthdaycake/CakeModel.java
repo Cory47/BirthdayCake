@@ -10,7 +10,7 @@ public class CakeModel {
     public boolean hasFrosting;
     public boolean hasCandles;
     public boolean drawBalloon;
-    Balloon myBalloon;
+    public Balloon myBalloon;
     public float xcoord;
     public float ycoord;
 
