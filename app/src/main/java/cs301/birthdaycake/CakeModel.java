@@ -9,11 +9,15 @@ public class CakeModel {
     public int numCandles;
     public boolean hasFrosting;
     public boolean hasCandles;
+    public float xcoord;
+    public float ycoord;
 
     public CakeModel(){
         candlesLit = true;
         numCandles = 2;
         hasFrosting = true;
         hasCandles = true;
+        xcoord = 0;
+        ycoord= 0;
     }
 }

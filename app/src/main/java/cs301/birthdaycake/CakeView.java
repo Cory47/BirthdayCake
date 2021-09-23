@@ -5,7 +5,9 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.SurfaceView;
+import android.view.View;
 
 public class CakeView extends SurfaceView {
 
@@ -16,6 +18,9 @@ public class CakeView extends SurfaceView {
     Paint outerFlamePaint = new Paint();
     Paint innerFlamePaint = new Paint();
     Paint wickPaint = new Paint();
+
+    //Paint for the Text Coordinates
+    Paint coordPaint = new Paint();
 
     /* These constants define the dimensions of the cake.  While defining constants for things
         like this is good practice, we could be calculating these better by detecting
@@ -64,6 +69,9 @@ public class CakeView extends SurfaceView {
         setBackgroundColor(Color.WHITE);  //better than black default
         cake = new CakeModel();
 
+        //set Coordinates and Paint
+        coordPaint.setTextSize(50);
+        coordPaint.setColor(Color.RED);
     }
 
     /**
@@ -126,6 +134,12 @@ public class CakeView extends SurfaceView {
         for (int i = 1; i < cake.numCandles + 1; i++ ) {
             drawCandle(canvas, cakeLeft + (cakeWidth * i) / (cake.numCandles + 1) - (candleWidth * i) / 2, cakeTop);
         }
+
+        //Draw the coordinate touched on the surface view
+        if (cake.xcoord != 0 && cake.ycoord != 0) {
+            canvas.drawText("(" + cake.xcoord + ", " + cake.ycoord + ")", 1330, 500, coordPaint);
+        }
+
         //drawCandle(canvas, cakeLeft + cakeWidth/3 - candleWidth/3, cakeTop);
         //drawCandle(canvas, cakeLeft + cakeWidth*2/3 - candleWidth*2/3, cakeTop);
 

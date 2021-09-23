@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
         CakeView cakeview = (CakeView) findViewById(R.id.cakeview);
         CakeController cakecontroller = new CakeController(cakeview);
+        cakeview.setOnTouchListener(cakecontroller);
 
         Switch candleSwitch = (Switch) findViewById(R.id.candleSwitch);
         candleSwitch.setOnCheckedChangeListener(cakecontroller);
@@ -29,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
 
         SeekBar candlesSeekBar = (SeekBar) findViewById(R.id.howManyCandlesSeekBar);
         candlesSeekBar.setOnSeekBarChangeListener(cakecontroller);
+
+
 
     }
 
