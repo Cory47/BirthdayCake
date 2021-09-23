@@ -8,7 +8,7 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.SeekBar;
 import android.widget.Switch;
 
-public class CakeController implements View.OnClickListener, Switch.OnCheckedChangeListener, SeekBar.OnSeekBarChangeListener, View.OnTouchListener {
+public class CakeController implements View.OnClickListener, Switch.OnCheckedChangeListener, SeekBar.OnSeekBarChangeListener {
     private CakeView cakeview;
     private CakeModel cakeModel;
     public CakeController(CakeView cake) {
@@ -43,13 +43,15 @@ public class CakeController implements View.OnClickListener, Switch.OnCheckedCha
     public void onStopTrackingTouch(SeekBar seekBar) {
 
     }
-
     @Override
     public boolean onTouch(View view, MotionEvent motionEvent) {
         if (motionEvent.getActionMasked() == MotionEvent.ACTION_DOWN) {
             //this is reporting the beginning of a touch event, as the user touches down
             cakeModel.myBalloon.setXY(motionEvent.getX(), motionEvent.getY()); //updates coordinates to draw balloon at
             cakeModel.drawBalloon = true;
+
+            cakeModel.xcoord = motionEvent.getX();
+            cakeModel.ycoord = motionEvent.getY();
 
             cakeview.invalidate();
             return true;

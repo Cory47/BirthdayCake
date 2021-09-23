@@ -11,6 +11,8 @@ public class CakeModel {
     public boolean hasCandles;
     public boolean drawBalloon;
     Balloon myBalloon;
+    public float xcoord;
+    public float ycoord;
 
     public CakeModel(){
         candlesLit = true;
@@ -20,5 +22,7 @@ public class CakeModel {
         drawBalloon = false;
         myBalloon = new Balloon(0, 0);
 
+        xcoord = 0;
+        ycoord= 0;
     }
 }
