@@ -21,6 +21,8 @@ public class CakeView extends SurfaceView {
 
     //Paint for the Text Coordinates
     Paint coordPaint = new Paint();
+    Paint checkerPaint = new Paint();
+    Paint checkerPaint2 = new Paint();
 
     /* These constants define the dimensions of the cake.  While defining constants for things
         like this is good practice, we could be calculating these better by detecting
@@ -65,6 +67,11 @@ public class CakeView extends SurfaceView {
         innerFlamePaint.setStyle(Paint.Style.FILL);
         wickPaint.setColor(Color.BLACK);
         wickPaint.setStyle(Paint.Style.FILL);
+
+        checkerPaint.setColor(Color.RED); //set color to red
+        checkerPaint.setStyle(Paint.Style.FILL);
+        checkerPaint2.setColor(Color.GREEN); //set color to green
+        checkerPaint2.setStyle(Paint.Style.FILL);
 
         setBackgroundColor(Color.WHITE);  //better than black default
         cake = new CakeModel();
@@ -141,7 +148,13 @@ public class CakeView extends SurfaceView {
         //Draw the coordinate touched on the surface view
         if (cake.xcoord != 0 && cake.ycoord != 0) {
             canvas.drawText("(" + cake.xcoord + ", " + cake.ycoord + ")", 1330, 500, coordPaint);
+            canvas.drawRect(cake.xcoord,cake.ycoord,cake.xcoord + 30,cake.ycoord + 30,checkerPaint2);
+            canvas.drawRect(cake.xcoord,cake.ycoord - 30,30 + cake.xcoord,cake.ycoord,checkerPaint);
+            canvas.drawRect(cake.xcoord - 30,cake.ycoord - 30,cake.xcoord,cake.ycoord,checkerPaint2);
+            canvas.drawRect(cake.xcoord - 30,cake.ycoord,cake.xcoord,cake.ycoord + 30,checkerPaint);
+
         }
+
 
         //drawCandle(canvas, cakeLeft + cakeWidth/3 - candleWidth/3, cakeTop);
         //drawCandle(canvas, cakeLeft + cakeWidth*2/3 - candleWidth*2/3, cakeTop);
